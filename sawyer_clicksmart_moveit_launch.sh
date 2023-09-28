@@ -13,6 +13,6 @@ echo ${device_name}
 
 python sawyer_clicksmart_initialize.py
 # launch moveit
-roslaunch sawyer_moveit_config sawyer_moveit.launch clicksmart_gripper:=true tip_name:="${device_name}_tip" stp_device_name:="${device_name}"
+roslaunch sawyer_moveit_config sawyer_moveit.launch clicksmart_gripper:=true tip_name:="${device_name}_tip_1" stp_device_name:="${device_name}"
 
 
