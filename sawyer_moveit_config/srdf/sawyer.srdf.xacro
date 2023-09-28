@@ -3,7 +3,9 @@
 
   <!--SRDF Xacro Args-->
   <xacro:arg name="tip_name" default="right_hand"/>
+  <xacro:arg name="stp_device_name" default="stp_device_name"/>
   <xacro:arg name="electric_gripper" default="false"/>
+  <xacro:arg name="clicksmart_gripper" default="false"/>
   <xacro:arg name="controller_box" default="true"/>
 
   <!--Base Sawyer Collisions-->
@@ -20,5 +22,9 @@
   <xacro:if value="$(arg electric_gripper)">
     <xacro:include filename="$(find sawyer_moveit_config)/srdf/rethink_electric_gripper.srdf.xacro" />
     <xacro:rethink_electric_gripper side="right"/>
+  </xacro:if>
+  <xacro:if value="$(arg clicksmart_gripper)">
+    <xacro:include filename="$(find sawyer_moveit_config)/srdf/rethink_clicksmart_gripper.srdf.xacro" />
+    <xacro:rethink_clicksmart_gripper side="right" stp_device_name="$(arg stp_device_name)"/>
   </xacro:if>
 </robot>

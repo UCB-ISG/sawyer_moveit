@@ -2,8 +2,10 @@
 <launch>
   <!-- Right electric gripper param. Set to true to check for collisions for their links -->
   <arg name="electric_gripper" default="false"/>
+  <arg name="clicksmart_gripper" default="false"/>
   <!-- Set the kinematic tips for the left_arm and right_arm move_groups -->
   <arg name="tip_name" default="right_hand"/>
+  <arg name="stp_device_name" default="stp_device_name"/>
   <!-- Add controller box collision shape to check for link collisions if set to true-->
   <arg name="controller_box" default="true"/>
 
@@ -21,7 +23,9 @@
   <param name="robot_description_semantic"
       command="$(find xacro)/xacro --inorder $(find sawyer_moveit_config)/srdf/sawyer.srdf.xacro
           electric_gripper:=$(arg electric_gripper)
+          clicksmart_gripper:=$(arg clicksmart_gripper)
           tip_name:=$(arg tip_name)
+          stp_device_name:=$(arg stp_device_name)
           controller_box:=$(arg controller_box)"/>
   
   <!-- Load updated joint limits (override information from URDF) -->
