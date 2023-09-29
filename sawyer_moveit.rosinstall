@@ -13,4 +13,4 @@
 - git:
     local-name: sawyer_moveit
     uri: https://github.com/UCB-ISG/sawyer_moveit.git
-    version: ucb-noetic
+    version: ucb-noetic-clicksmart
