@@ -16,9 +16,10 @@
   <arg name="electric_gripper" default="false"/>
   <arg name="clicksmart_gripper" default="false"/>
   <!-- Set the kinematic tip for the right_arm move_group -->
-  <!-- modified 1 lines below ###################################################################-->
-  <arg name="tip_name" if="$(arg electric_gripper)" default="stp_022412TP99883_tip_1"/>
-  <arg name="tip_name" if="$(arg clicksmart_gripper)" default="stp_device_name_tip_1"/>
+  <!-- modified 4 lines below ###################################################################-->
+  <arg name="stp_device_name" default="$(env SAWYER_GRIPPER_NODENAME)"/>
+  <arg name="tip_name" if="$(arg electric_gripper)" default="$(arg stp_device_name)_tip_1"/>
+  <arg name="tip_name" if="$(arg clicksmart_gripper)" default="$(arg stp_device_name)_tip_1"/>
   <arg name="tip_name" unless="$(eval arg('electric_gripper') or arg('clicksmart_gripper'))" default="right_hand"/>
 
 
@@ -26,8 +27,6 @@
   <node if="$(arg electric_gripper)" pkg="sawyer_moveit_config" name="sawyer_clicksmart_initialize" type="sawyer_clicksmart_initialize.py" output="screen"/>
   <!-- Modified by mnguy -->
 
-  <!-- modified 1 lines below ###################################################################-->
-  <arg name="stp_device_name" default="stp_022412TP99883"/>
   <!-- Add planning context launch file -->
   <include file="$(find sawyer_moveit_config)/launch/planning_context.launch">
     <arg name="load_robot_description" value="$(arg load_robot_description)"/>
